@@ -1,18 +1,9 @@
-import sys
-import os
 from github import Github
+import sys
 
-path = "/Users/kalle/Documents/Projects/MyProjects/"
+# g = Github('USERNAME', 'PASSWORD') auth with username and password
+g = Github('YOUR_PERSONAL_ACCESS_TOKEN')
 
-username = "" #Insert your github username here
-password = "" #Insert your github password here
+user = g.get_user()
 
-def create():
-    folderName = str(sys.argv[1])
-    os.makedirs(path + str(sys.argv[1]))
-    user = Github(username, password).get_user()
-    repo = user.create_repo(sys.argv[1])
-    print("Succesfully created repository {}".format(sys.argv[1]))
-
-if __name__ == "__main__":
-    create()
+res = user.create_repo(name=str(sys.argv[1]), private=True, gitignore_template=str(sys.argv[2]))
