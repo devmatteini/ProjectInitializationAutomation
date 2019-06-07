@@ -4,7 +4,7 @@ function create() {
     # Check if project already exists
     cd ~/Documents/dev/    
     if [ -d "$1" ]; then 
-        echo "Project already exits";
+        echo "Project already exists";
         return 1;
     fi
 
