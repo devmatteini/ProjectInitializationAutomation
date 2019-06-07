@@ -5,7 +5,7 @@ function create(){
 
     # Execute python script that interacts with the GitHub API
     cd ~/bin/
-    python3.7 create_repository.py $1 $2
+    python3.7 create.py $1 $2
 
     # Change dir to dev folder and create the new folder for this project
     cd ~/Documents/dev/
