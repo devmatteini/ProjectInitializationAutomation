@@ -1,7 +1,12 @@
 #!/bin/bash
 
-function create(){
-    echo Initializing...
+function create() {
+    # Check if project already exists
+    cd ~/Documents/dev/    
+    if [ -d "$1" ]; then 
+        echo "Project already exits";
+        return 1;
+    fi
 
     # Execute python script that interacts with the GitHub API
     cd ~/bin/
@@ -14,8 +19,10 @@ function create(){
     # Init git folder. Add remote with ssh. Pull files created from the python script
     git init
     git remote add origin git@github.com:devmatteini/$1.git
-    git pull origin master
     
+    # If you leave the second argument empty there is nothing to be pulled from the repo
+    if [ ! -z "$2" ]; then git pull origin master; fi
+
     # Create README.md with the name of the project as its title
     touch README.md
     echo "# $1" >> README.md
