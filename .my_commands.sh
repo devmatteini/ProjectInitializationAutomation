@@ -31,6 +31,13 @@ function create() {
     git add .
     git commit -m "Initial commit"
     git push -u origin master
+
+    # Create a python virtual enviroment
+    if [ "$2" = "Python" ]; then
+        python3 -m venv env;
+        source env/bin/activate;
+    fi
+    
     echo Done
     code .
 }
