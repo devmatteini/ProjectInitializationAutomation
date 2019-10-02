@@ -1,31 +1,43 @@
-### Installation
+# ProjectInitializationAutomation
 
-```
+Script (either for linux or windows) to use when you have to create a new project and don't want to do the same (boring) things everytime.
+
+## Installation
+
+### Linux
+
+```bash
 git clone "https://github.com/devmatteini/ProjectInitializationAutomation.git"
 
 cd ProjectInitializationAutomation
 
 pip install -r requirements.txt
 
-source ~/.my_commands.sh
+source ~/linux/.my_commands.sh
 ```
 
-Then go to `create.py` and set the username and password or use a personal access token that
-you can create from within the Github devoloper section in the settings.
-Also make sure to change all directories to your
-directories so it should be:
+### Windows
 
-`/Users/<your_username>/path/to/your/project`
+```bash
+git clone "https://github.com/devmatteini/ProjectInitializationAutomation.git"
 
-### Usage
+cd ProjectInitializationAutomation
+
+pip install -r requirements.txt
+```
+
+If you want to use the `create` batch script from everywhere, you have to add to your system environment variables the file's path (I put my batch file under `C:\bin` but you can change it).
+_If you don't know how to change environment variables check out this [guide](https://www.architectryan.com/2018/08/31/how-to-change-environment-variables-on-windows-10/)_.
+
+## Usage
 
 #### Create A New Project
 
 ```bash
-create <name_of_your_folder> [template_for_gitignore]
+create <name_of_your_project> [.gitignore_template]
 ```
 
-The `template_for_gitignore` is optional.
+The `.gitignore_template` needs to follow the [names](https://github.com/github/gitignore) used by Github, in order to generate it correctly via the GithubAPI.
 
 #### Open An Existing Project
 
