@@ -51,3 +51,52 @@ function create() {
     echo "[√] Done"
     code .
 }
+
+
+function dev_usage_msg(){
+    echo "Usage: dev [-c] <name_of_your_project>"
+}
+
+function dev(){
+    OPTIND=1
+    current_dir=${PWD}
+    while getopts ":c:" opt; do
+        case $opt in
+        c)
+            cd ~/Documents/dev/
+            if [ ! -d "$OPTARG" ]; then 
+                echo "Project <$OPTARG> does not exists";
+                cd $current_dir;
+                return 1;
+            fi
+            cd $OPTARG
+            # Activate python virtualenv, if it does exist
+            if [ -d "./env" ]; then source env/bin/activate; fi
+            code .
+            return 0
+            ;;
+        \?)
+            dev_usage_msg
+            return 1
+            ;;
+        :)
+            echo "Invalid option: -$OPTARG requires an argument: <name_of_your_project>." >&2
+            return 1
+            ;;
+        esac
+    done
+
+    # NO OPTION PROVIDED
+    if [ -z "$1" ]; then dev_usage_msg; return 1; fi
+
+    cd ~/Documents/dev/
+    if [ ! -d "$1" ]; then 
+        echo "Project <$1> does not exists";
+        cd $current_dir
+        return 1;
+    fi
+    
+    cd $1
+    # Activate python virtualenv, if it does exist
+    if [ -d "./env" ]; then source env/bin/activate; fi
+}
