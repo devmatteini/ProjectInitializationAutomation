@@ -13,7 +13,7 @@ cd ProjectInitializationAutomation
 
 pip install -r requirements.txt
 
-source ~/linux/.my_commands.sh
+source ~/.my_commands.sh
 ```
 
 ### Windows
