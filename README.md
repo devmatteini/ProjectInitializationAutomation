@@ -19,6 +19,18 @@ directories so it should be:
 
 ### Usage
 
-`create [name_of_your_folder] [template_for_gitignore]`
+#### Create A New Project
+
+```bash
+create <name_of_your_folder> [template_for_gitignore]
+```
 
 The `template_for_gitignore` is optional.
+
+#### Open An Existing Project
+
+```bash
+dev [-c] <name_of_your_project>
+```
+
+The `-c` flag is optional. If you use it, it will open the project in visual studio code.
