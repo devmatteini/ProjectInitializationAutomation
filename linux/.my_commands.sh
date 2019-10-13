@@ -59,7 +59,7 @@ function create() {
 }
 
 function dev_usage_msg(){
-    echo "Usage: dev [-c] <name_of_your_project>"
+    echo -e "\033[33mUsage: dev [-c] <name_of_your_project>"
 }
 
 function dev(){
@@ -70,7 +70,7 @@ function dev(){
         c)
             cd ~/Documents/dev/
             if [ ! -d "$OPTARG" ]; then 
-                echo "Project <$OPTARG> does not exists";
+                echo -e "\033[31m[!] Project <$OPTARG> does not exist";
                 cd $current_dir;
                 return 1;
             fi
@@ -85,7 +85,7 @@ function dev(){
             return 1
             ;;
         :)
-            echo "Invalid option: -$OPTARG requires an argument: <name_of_your_project>." >&2
+            echo -e "\033[33m[!] Invalid option: -$OPTARG requires an argument: <name_of_your_project>." >&2
             return 1
             ;;
         esac
@@ -96,7 +96,7 @@ function dev(){
 
     cd ~/Documents/dev/
     if [ ! -d "$1" ]; then 
-        echo "Project <$1> does not exists";
+        echo -e "\033[31m[!] Project <$1> does not exists";
         cd $current_dir
         return 1;
     fi
