@@ -55,7 +55,7 @@ remove <name_of_your_project>
 ```
 
 ## TODO
-* [ ] Create dev and remove script for windows
+* [ ] Create `dev` and `remove` script for windows
 * [ ] Add flag on `create` to choose if the repository has to be public or private
 * [ ] Add flag on `remove` to choose between deleting permanently or moving  the repo to the trash
 
