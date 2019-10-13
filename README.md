@@ -53,3 +53,11 @@ The `-c` flag is optional. If you use it, it will open the project in visual stu
 ```bash
 remove <name_of_your_project>
 ```
+
+## TODO
+* [ ] Create dev and remove script for windows
+* [ ] Add flag on `create` to choose if the repository has to be public or private
+* [ ] Add flag on `remove` to choose between deleting permanently or moving  the repo to the trash
+
+
+
