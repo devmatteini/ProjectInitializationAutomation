@@ -3,14 +3,14 @@
 function create() {
     # Check required argument
     if [ -z "$1" ]; then
-        echo "Usage: create <name_of_the_project> [.gitignore_template]";
+        echo -e "\033[33mUsage: create <name_of_the_project> [.gitignore_template]";
         return 1;
     fi
     
     # Check if project already exists
     cd ~/Documents/dev/    
     if [ -d "$1" ]; then 
-        echo "[!] Project already exist";
+        echo -e "\033[31m[!] Project already exist";
         return 1;
     fi
 
@@ -18,6 +18,8 @@ function create() {
     cd ~/bin/
     echo "[-] Generating github repository..."
     python3.7 create.py $1 $2
+    echo -e "\033[32m[√] Github repository created successfully"
+    echo -e "\033[39m------------------------------------"
 
     # Change dir to dev folder and create the new folder for this project
     echo "[-] Generating local repository..."
@@ -34,6 +36,8 @@ function create() {
     # Create README.md with the name of the project as its title
     touch README.md
     echo "# $1" >> README.md
+    echo -e "\033[32m[√] Local repository created successfully"
+    echo -e "\033[39m------------------------------------"
 
     # Add new files and commit
     echo "[-] Synchronizing local and remote repository..."
@@ -47,8 +51,10 @@ function create() {
         python3 -m venv env &> /dev/null;
         source env/bin/activate &> /dev/null;
     fi
+    echo -e "\033[32m[√] Synchronized local and remote repository successfully"
+    echo -e "\033[39m------------------------------------"
     
-    echo "[√] Done"
+    echo -e "\033[32m[√] Done"
     code .
 }
 
