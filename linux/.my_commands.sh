@@ -105,3 +105,26 @@ function dev(){
     # Activate python virtualenv, if it does exist
     if [ -d "./env" ]; then source env/bin/activate; fi
 }
+
+function remove(){
+    if [ -z "$1" ]; then echo -e "\033[33mUsage: remove <name_of_the_project>"; return 1; fi
+
+    #subshell
+    (
+    cd ~/Documents/dev/ 
+    if [ ! -d "$1" ]; then echo -e "\033[31m[!] Project does not exist"; return 1; fi
+
+    echo -e "\033[39m[-] Removing github repository <$1>..."
+    cd ~/bin/ && output=$(python3 delete.py $1)
+    if [ $output = "404" ]; then echo -e "\033[31m[X] Github repository does not exist"; return 1; fi
+
+    echo -e "\033[32m[√] Github repository removed successfully"
+    echo -e "\033[39m------------------------------------"
+    echo -e "\033[39m[-] Removing local repository <$1>..."
+
+    cd ~/Documents/dev/ && rm -rf $1
+    echo -e "\033[32m[√] Local repository removed successfully"
+    echo -e "\033[39m------------------------------------"
+    echo -e "\033[32m[√] Done"
+    )
+}
