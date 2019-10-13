@@ -2,7 +2,7 @@
 
 function create() {
     # Check required argument
-    if [ ! -z "$1" ]; then
+    if [ -z "$1" ]; then
         echo "Usage: create <name_of_the_project> [.gitignore_template]";
         return 1;
     fi
@@ -25,11 +25,11 @@ function create() {
     mkdir $1 && cd $1
     
     # Init git folder. Add remote with ssh. Pull files created from the python script
-    git init
-    git remote add origin git@github.com:devmatteini/$1.git
+    git init &> /dev/null
+    git remote add origin git@github.com:devmatteini/$1.git &> /dev/null
     
     # If you leave the second argument empty there is nothing to be pulled from the repo
-    if [ ! -z "$2" ]; then git pull origin master; fi
+    if [ ! -z "$2" ]; then git pull origin master &> /dev/null; fi
 
     # Create README.md with the name of the project as its title
     touch README.md
@@ -37,21 +37,20 @@ function create() {
 
     # Add new files and commit
     echo "[-] Synchronizing local and remote repository..."
-    git add .
-    git commit -m "Initial commit"
-    git push -u origin master
+    git add . &> /dev/null
+    git commit -m "Initial commit" &> /dev/null
+    git push -u origin master &> /dev/null
 
     # Create a python virtual enviroment
     if [ "$2" = "Python" ]; then
         echo "[-] Generating python virtualenv..."
-        python3 -m venv env;
-        source env/bin/activate;
+        python3 -m venv env &> /dev/null;
+        source env/bin/activate &> /dev/null;
     fi
     
     echo "[√] Done"
     code .
 }
-
 
 function dev_usage_msg(){
     echo "Usage: dev [-c] <name_of_your_project>"
