@@ -17,7 +17,7 @@ function create() {
     # Execute python script that interacts with the GitHub API
     cd ~/bin/
     echo "[-] Generating github repository..."
-    python3.7 create.py $1 $2
+    python3 create.py $1 $2
     echo -e "\033[32m[√] Github repository created successfully"
     echo -e "\033[39m------------------------------------"
 
