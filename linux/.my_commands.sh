@@ -44,15 +44,17 @@ function create() {
     git add . &> /dev/null
     git commit -m "Initial commit" &> /dev/null
     git push -u origin master &> /dev/null
+    echo -e "\033[32m[√] Synchronized local and remote repository successfully"
+    echo -e "\033[39m------------------------------------"
 
     # Create a python virtual enviroment
     if [ "$2" = "Python" ]; then
         echo "[-] Generating python virtualenv..."
         python3 -m venv env &> /dev/null;
         source env/bin/activate &> /dev/null;
+        echo -e "\033[32m[√] Python virtualenv created successfully";
+        echo -e "\033[39m------------------------------------";
     fi
-    echo -e "\033[32m[√] Synchronized local and remote repository successfully"
-    echo -e "\033[39m------------------------------------"
     
     echo -e "\033[32m[√] Done"
     code .
