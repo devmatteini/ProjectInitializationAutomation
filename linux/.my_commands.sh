@@ -130,3 +130,9 @@ function remove(){
     echo -e "\033[32m[√] Done"
     )
 }
+
+function list(){
+    (
+        cd ~/Documents/dev && ls
+    )
+}
