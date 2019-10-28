@@ -54,6 +54,12 @@ The `-c` flag is optional. If you use it, it will open the project in visual stu
 remove <name_of_your_project>
 ```
 
+#### Show All Projects (Only on Linux)
+
+```bash
+list
+```
+
 ## TODO
 * [ ] Create `dev` and `remove` script for windows
 * [ ] Add flag on `create` to choose if the repository has to be public or private
